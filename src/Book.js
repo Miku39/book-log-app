@@ -26,12 +26,12 @@ function Book() {
     <div>
       {bookListJson.map((bookItem) => {
         return (
-          <div key={bookItem.isbn}>
+          <div key={bookItem.id}>
             <div>{bookItem.title}</div>
             <div>{bookItem.subtitle}</div>
             <div>
               <img
-                src={bookItem.imageUrl}
+                src={bookItem.image_url}
                 alt={bookItem.title}
                 width="128"
                 height="160"
