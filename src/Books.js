@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const url = "https://book-log-api.herokuapp.com/books";
 
-function Book() {
+function Books() {
   const [bookListJson, setBookListJson] = useState(null);
 
   // TODO: async awaitを使用する
@@ -37,6 +38,7 @@ function Book() {
                 height="160"
               ></img>
             </div>
+            <Link to={"/books/" + bookItem.id}>詳細</Link>
           </div>
         );
       })}
@@ -44,4 +46,4 @@ function Book() {
   );
 }
 
-export default Book;
+export default Books;
