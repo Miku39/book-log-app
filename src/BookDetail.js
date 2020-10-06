@@ -6,18 +6,16 @@ function BookDetail(props) {
   const [bookDetailJson, setBookDetailJson] = useState(null);
   const id = parseInt(props.match.params.id, 10);
 
-  // TODO: async awaitを使用する
   useEffect(() => {
-    fetch(`${url}/${id}`)
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((json) => {
-        console.log(json);
-        setBookDetailJson(json);
-      });
-  }, []);
+    setBookDetailJson(null);
+    const getBookDetail = async () => {
+      const response = await fetch(`${url}/${id}`);
+      const jsonData = await response.json();
+      setBookDetailJson(jsonData);
+    };
+
+    getBookDetail();
+  }, [id]);
 
   if (!bookDetailJson) {
     return <div>Loading</div>;

@@ -6,17 +6,13 @@ const url = "https://book-log-api.herokuapp.com/books";
 function Books() {
   const [bookListJson, setBookListJson] = useState(null);
 
-  // TODO: async awaitを使用する
   useEffect(() => {
-    fetch(url)
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((json) => {
-        console.log(json);
-        setBookListJson(json);
-      });
+    const getBookList = async () => {
+      const response = await fetch(url);
+      const jsonData = await response.json();
+      setBookListJson(jsonData);
+    };
+    getBookList();
   }, []);
 
   if (!bookListJson) {
