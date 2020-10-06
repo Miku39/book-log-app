@@ -23,7 +23,24 @@ function BookDetail(props) {
     return <div>Loading</div>;
   }
 
-  return <div>aiueo</div>;
+  return (
+    <div>
+      <div key={bookDetailJson.id}>
+        <div>{bookDetailJson.title}</div>
+        <div>{bookDetailJson.author}</div>
+        <div>{bookDetailJson.date}</div>
+        <div>{bookDetailJson.note}</div>
+        <div>
+          <img
+            src={bookDetailJson.image_url}
+            alt={bookDetailJson.title}
+            width="128"
+            height="160"
+          ></img>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default BookDetail;

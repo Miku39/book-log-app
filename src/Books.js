@@ -29,7 +29,7 @@ function Books() {
         return (
           <div key={bookItem.id}>
             <div>{bookItem.title}</div>
-            <div>{bookItem.subtitle}</div>
+            <div>{bookItem.author}</div>
             <div>
               <img
                 src={bookItem.image_url}
