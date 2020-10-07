@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
 
 const url = "https://book-log-api.herokuapp.com/books";
 
@@ -24,7 +23,7 @@ function Books() {
     <div>
       {bookListJson.map((bookItem) => {
         return (
-          <div key={bookItem.id}>
+          <div key={bookItem.id} onClick={handleToBookDetailPage(bookItem.id)}>
             <div>{bookItem.title}</div>
             <div>{bookItem.author}</div>
             <div>
@@ -35,17 +34,16 @@ function Books() {
                 height="160"
               ></img>
             </div>
-
-            <Link to={"/books/" + bookItem.id}>
-              <Button variant="contained" color="primary">
-                詳細
-              </Button>
-            </Link>
+            <Link to={"/books/" + bookItem.id}>詳細</Link>
           </div>
         );
       })}
     </div>
   );
+}
+
+function handleToBookDetailPage(itemId) {
+  // move to "/books/" + itemId
 }
 
 export default Books;
