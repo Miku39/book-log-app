@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const url = "https://book-log-api.herokuapp.com/books";
 
 function Books() {
   const [bookListJson, setBookListJson] = useState(null);
+  const history = useHistory();
 
+  // call book list api
   useEffect(() => {
     const getBookList = async () => {
       const response = await fetch(url);
@@ -23,7 +25,10 @@ function Books() {
     <div>
       {bookListJson.map((bookItem) => {
         return (
-          <div key={bookItem.id} onClick={handleToBookDetailPage(bookItem.id)}>
+          <div
+            key={bookItem.id}
+            onClick={() => history.push("/books/" + bookItem.id)}
+          >
             <div>{bookItem.title}</div>
             <div>{bookItem.author}</div>
             <div>
@@ -34,16 +39,11 @@ function Books() {
                 height="160"
               ></img>
             </div>
-            <Link to={"/books/" + bookItem.id}>詳細</Link>
           </div>
         );
       })}
     </div>
   );
-}
-
-function handleToBookDetailPage(itemId) {
-  // move to "/books/" + itemId
 }
 
 export default Books;
