@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -37,7 +38,35 @@ function Books() {
 
   return (
     <div>
-      <TableContainer component={Paper}>
+      <Grid
+        container
+        direction="column"
+        justify="flex-start"
+        alignItems="center"
+      >
+        {bookListJson.map((bookItem) => (
+          <Grid
+            container
+            direction="row"
+            justify="flex-start"
+            alignItems="center"
+            key={bookItem.id}
+            onClick={() => history.push("/books/" + bookItem.id)}
+          >
+            <Grid item xs={2}>
+              <img src={bookItem.image_url} alt={bookItem.title}></img>
+            </Grid>
+            <Grid item xs={6}>
+              <div>{bookItem.title}</div>
+              <div>{bookItem.author}</div>
+            </Grid>
+            <Grid item xs={2}>
+              {bookItem.date}
+            </Grid>
+          </Grid>
+        ))}
+      </Grid>
+      {/* <TableContainer component={Paper}>
         <Table className={classes.table}>
           <TableBody>
             {bookListJson.map((bookItem) => (
@@ -57,7 +86,7 @@ function Books() {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer> */}
     </div>
   );
 }
