@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
     margin: 16,
   },
   grid: {
-    margin: 8,
+    margin: 4,
+  },
+  item: {
+    padding: 8,
+  },
+  image: {
+    width: "100%",
   },
 });
 
@@ -35,7 +42,7 @@ function Books() {
 
   return (
     <div className={classes.root}>
-      <h1>Book List</h1>
+      <Typography variant="h1">Book List</Typography>
       {bookListJson.map((bookItem) => (
         <Grid
           container
@@ -44,23 +51,23 @@ function Books() {
           onClick={() => history.push("/books/" + bookItem.id)}
           className={classes.grid}
         >
-          <Grid item xs={5} md={2}>
+          <Grid item xs={4} md={2} className={classes.item}>
             <img
               src={bookItem.image_url}
               alt={bookItem.title}
-              // width={"100%"}
+              className={classes.image}
             ></img>
           </Grid>
-          <Grid item xs={7} md={10}>
+          <Grid item xs={8} md={10} className={classes.item}>
             <Grid container justify="center">
               <Grid item xs={12} md={7}>
-                {bookItem.title}
+                <Typography variant="subtitle1">{bookItem.title}</Typography>
               </Grid>
               <Grid item xs={12} md={3}>
-                {bookItem.author}
+                <Typography variant="subtitle2">{bookItem.author}</Typography>
               </Grid>
               <Grid item xs={12} md={2}>
-                {bookItem.date}
+                <Typography variant="body2">{bookItem.date}</Typography>
               </Grid>
             </Grid>
           </Grid>
