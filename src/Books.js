@@ -16,6 +16,9 @@ const useStyles = makeStyles({
   item: {
     padding: 8,
   },
+  itemInfo: {
+    paddingLeft: 8,
+  },
   image: {
     width: "100%",
   },
@@ -82,13 +85,13 @@ function Books() {
             </Grid>
             <Grid item xs={8} md={10} className={classes.item}>
               <Grid container justify="center">
-                <Grid item xs={12} md={7}>
+                <Grid item xs={12} md={7} className={classes.itemInfo}>
                   <Typography variant="subtitle1">{bookItem.title}</Typography>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={3} className={classes.itemInfo}>
                   <Typography variant="subtitle2">{bookItem.author}</Typography>
                 </Grid>
-                <Grid item xs={12} md={2}>
+                <Grid item xs={12} md={2} className={classes.itemInfo}>
                   <Typography variant="body1">{bookItem.date}</Typography>
                 </Grid>
               </Grid>
