@@ -7,6 +7,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
+    margin: "auto",
+    maxWidth: "950px",
+  },
+  root2: {
     margin: 16,
   },
   item: {
@@ -60,23 +64,27 @@ function BookDetail(props) {
   return (
     <MuiThemeProvider theme={theme}>
       <div key={bookDetailJson.id} className={classes.root}>
-        <Typography variant="h3">{bookDetailJson.title}</Typography>
-        <Grid container justify="center">
-          <Grid item xs={4} className={classes.item}>
-            <img
-              src={bookDetailJson.image_url}
-              alt={bookDetailJson.title}
-              width="128"
-              height="160"
-              className={classes.image}
-            ></img>
+        <div className={classes.root2}>
+          <Typography variant="h3">{bookDetailJson.title}</Typography>
+          <Grid container justify="center">
+            <Grid item xs={4} className={classes.item}>
+              <img
+                src={bookDetailJson.image_url}
+                alt={bookDetailJson.title}
+                className={classes.image}
+              ></img>
+            </Grid>
+            <Grid item xs={8} className={classes.item}>
+              <Typography variant="subtitle1">
+                {bookDetailJson.author}
+              </Typography>
+              <Typography variant="body1">
+                {bookDetailJson.date} 読了
+              </Typography>
+              <Typography variant="subtitle2">{bookDetailJson.note}</Typography>
+            </Grid>
           </Grid>
-          <Grid item xs={8} className={classes.item}>
-            <Typography variant="subtitle1">{bookDetailJson.author}</Typography>
-            <Typography variant="body1">{bookDetailJson.date}</Typography>
-            <Typography variant="subtitle2">{bookDetailJson.note}</Typography>
-          </Grid>
-        </Grid>
+        </div>
       </div>
     </MuiThemeProvider>
   );

@@ -8,6 +8,10 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
+    margin: "auto",
+    maxWidth: "950px",
+  },
+  root2: {
     margin: 16,
   },
   grid: {
@@ -32,6 +36,7 @@ const theme = createMuiTheme({
       fontWeight: "bold",
       marginBottom: 8,
       marginTop: 8,
+      marginRight: 8,
     },
     subtitle2: {
       fontSize: "0.875rem",
@@ -67,37 +72,45 @@ function Books() {
   return (
     <MuiThemeProvider theme={theme}>
       <div className={classes.root}>
-        <Typography variant="h3">Book List</Typography>
-        {bookListJson.map((bookItem) => (
-          <Grid
-            container
-            justify="center"
-            key={bookItem.id}
-            onClick={() => history.push("/books/" + bookItem.id)}
-            className={classes.grid}
-          >
-            <Grid item xs={4} md={2} className={classes.item}>
-              <img
-                src={bookItem.image_url}
-                alt={bookItem.title}
-                className={classes.image}
-              ></img>
-            </Grid>
-            <Grid item xs={8} md={10} className={classes.item}>
-              <Grid container justify="center">
-                <Grid item xs={12} md={7} className={classes.itemInfo}>
-                  <Typography variant="subtitle1">{bookItem.title}</Typography>
-                </Grid>
-                <Grid item xs={12} md={3} className={classes.itemInfo}>
-                  <Typography variant="subtitle2">{bookItem.author}</Typography>
-                </Grid>
-                <Grid item xs={12} md={2} className={classes.itemInfo}>
-                  <Typography variant="body1">{bookItem.date}</Typography>
+        <div className={classes.root2}>
+          <Typography variant="h3">Book List</Typography>
+          {bookListJson.map((bookItem) => (
+            <Grid
+              container
+              justify="center"
+              key={bookItem.id}
+              onClick={() => history.push("/books/" + bookItem.id)}
+              className={classes.grid}
+            >
+              <Grid item xs={4} md={2} className={classes.item}>
+                <img
+                  src={bookItem.image_url}
+                  alt={bookItem.title}
+                  className={classes.image}
+                ></img>
+              </Grid>
+              <Grid item xs={8} md={10} className={classes.item}>
+                <Grid container justify="center">
+                  <Grid item xs={12} md={7} className={classes.itemInfo}>
+                    <Typography variant="subtitle1">
+                      {bookItem.title}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} md={3} className={classes.itemInfo}>
+                    <Typography variant="subtitle2">
+                      {bookItem.author}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12} md={2} className={classes.itemInfo}>
+                    <Typography variant="body1">
+                      {bookItem.date} 読了
+                    </Typography>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        ))}
+          ))}
+        </div>
       </div>
     </MuiThemeProvider>
   );
